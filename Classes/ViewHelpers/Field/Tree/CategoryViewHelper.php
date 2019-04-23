@@ -55,6 +55,13 @@ class CategoryViewHelper extends TreeViewHelper
             false,
             'items'
         );
+        $this->registerArgument(
+            'renderType',
+            'string',
+            'Rendering type as applies in FormEngine/TCA',
+            false,
+            'selectSingle'
+        );
         $this->overrideArgument('showHeader', 'boolean', 'If TRUE, displays tree header', false, true);
         $this->overrideArgument('expandAll', 'boolean', 'If TRUE, expands all branches', false, true);
     }
@@ -73,6 +80,7 @@ class CategoryViewHelper extends TreeViewHelper
                 'tablenames' => 'tt_content'
             ]);
         }
+        $tree->setRenderType($arguments['renderType']);
         return $tree;
     }
 }
